@@ -1,9 +1,9 @@
 const DocumentClient = require('aws-sdk/clients/dynamodb').DocumentClient
 const dynamodb = new DocumentClient()
+const middy = require('@middy/core')
 const ssm = require('@middy/ssm')
 const failureLambda = require('failure-lambda')
 const Log = require('@dazn/lambda-powertools-logger')
-const wrap = require('@dazn/lambda-powertools-pattern-basic')
 
 const { serviceName, stage } = process.env
 
@@ -38,7 +38,7 @@ const handler = failureLambda(async (event, context) => {
   return response
 })
 
-module.exports.handler = wrap(handler).use(ssm({
+module.exports.handler = middy(handler).use(ssm({
   cache: true,
   cacheExpiryInMillis: 5 * 60 * 1000, // 5 mins
   names: {
