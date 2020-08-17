@@ -1,6 +1,6 @@
-const eventBridge = require('@dazn/lambda-powertools-eventbridge-client')
-const sns = require('@dazn/lambda-powertools-sns-client')
-const Log = require('@dazn/lambda-powertools-logger')
+const AWS = require('aws-sdk')
+const eventBridge = new AWS.EventBridge()
+const sns = new AWS.SNS()
 const wrap = require('@dazn/lambda-powertools-pattern-basic')
 
 const busName = process.env.bus_name

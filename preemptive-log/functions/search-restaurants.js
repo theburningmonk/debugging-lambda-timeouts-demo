@@ -1,8 +1,7 @@
-const DocumentClient = require('aws-sdk/clients/dynamodb').DocumentClient
-const dynamodb = new DocumentClient()
+const AWS = require('aws-sdk')
+const dynamodb = new AWS.DynamoDB.DocumentClient()
 const ssm = require('@middy/ssm')
 const failureLambda = require('failure-lambda')
-const Log = require('@dazn/lambda-powertools-logger')
 const wrap = require('@dazn/lambda-powertools-pattern-basic')
 
 const { serviceName, stage } = process.env
