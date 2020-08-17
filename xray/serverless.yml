@@ -19,6 +19,12 @@ provider:
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
     serviceName: ${self:service}
     stage: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource: "*"
   
 functions:
   get-index:
