@@ -24,11 +24,6 @@
     "serverless-pseudo-parameters": "^2.5.0"
   },
   "dependencies": {
-    "@dazn/lambda-powertools-correlation-ids": "^1.24.1",
-    "@dazn/lambda-powertools-eventbridge-client": "^1.24.1",
-    "@dazn/lambda-powertools-logger": "^1.24.1",
-    "@dazn/lambda-powertools-pattern-basic": "^1.24.1",
-    "@dazn/lambda-powertools-sns-client": "^1.24.1",
     "@middy/core": "^1.2.0",
     "@middy/ssm": "^1.2.0",
     "aws4": "^1.10.0",
