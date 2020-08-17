@@ -4,6 +4,7 @@ const http = require('axios')
 const aws4 = require('aws4')
 const URL = require('url')
 const Log = require('@dazn/lambda-powertools-logger')
+const wrap = require('@dazn/lambda-powertools-pattern-basic')
 
 const restaurantsApiRoot = process.env.restaurants_api
 const ordersApiRoot = process.env.orders_api
@@ -28,7 +29,7 @@ const getRestaurants = async () => {
   return (await httpReq).data
 }
 
-module.exports.handler = async (event, context) => {
+module.exports.handler = wrap(async (event, context) => {
   const restaurants = await getRestaurants()
   const dayOfWeek = days[new Date().getDay()]
   const view = {
@@ -48,4 +49,4 @@ module.exports.handler = async (event, context) => {
   }
 
   return response
-}
+})
