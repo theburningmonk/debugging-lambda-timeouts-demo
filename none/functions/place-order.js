@@ -1,11 +1,10 @@
 const eventBridge = require('@dazn/lambda-powertools-eventbridge-client')
 const chance = require('chance').Chance()
 const Log = require('@dazn/lambda-powertools-logger')
-const wrap = require('@dazn/lambda-powertools-pattern-basic')
 
 const busName = process.env.bus_name
 
-module.exports.handler = wrap(async (event) => {
+module.exports.handler = async (event) => {
   const restaurantName = JSON.parse(event.body).restaurantName
 
   const orderId = chance.guid()
@@ -27,4 +26,4 @@ module.exports.handler = wrap(async (event) => {
   }
 
   return response
-})
+}
